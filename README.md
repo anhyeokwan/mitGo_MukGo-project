@@ -25,6 +25,23 @@
 ## 유사사이트
 ![image](https://user-images.githubusercontent.com/77394673/220669718-4cd8c2b4-69b8-46ac-b6df-6feaca214430.png)
 
+## 개발환경
+- 운영체제 : window10
+- 개발도구 : eclipse
+- DBMS : Oracle, DB-SQLDeveloper
+- Server : Apache Tomcat v8.5
+- Language : java, html, css, js, jsp
+- 디자인 툴 : bootstrap, W3C
+- API : T-MAP api, KG-이니시스 결제 api
+- Framework : Spring
+
+## 프로젝트 시 활용해본 대표 기술
+- JAVA, JSP
+- ajax
+- JQuery, JavaScript
+- myBatis, maven
+- Spring Framework
+
 ## 일정
 - 2022.10.18 ~ 2022.11.18
 - 참여도 : 21%
