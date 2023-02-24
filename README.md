@@ -23,7 +23,7 @@
 - API : T-MAP api, KG-이니시스 결제 api
 - Framework : SpringMVC
 
-## 프로젝트 시 활용해본 대표 기술
+## 프로젝트 사용기술
 - JAVA, JSP
 - ajax
 - JQuery, JavaScript
