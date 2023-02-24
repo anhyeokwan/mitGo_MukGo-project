@@ -16,7 +16,7 @@
 
 
 ## 개발환경
-- DBMS : Oracler
+- DBMS : Oracle
 - Server : Apache Tomcat v8.5
 - Language : java, js
 - 디자인 툴 : bootstrap, W3C
