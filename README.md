@@ -663,7 +663,50 @@ public ArrayList<NoticeFile> selectNoticeFile(int noticeNo) {
 ![image](https://user-images.githubusercontent.com/77394673/222177649-6cffce6c-321f-4ef7-9d33-a25dfea3f6f4.png)
 - 관리자는 답글을 위해 비밀글을 비밀번호 없이 상세페이지에 들어갈 수 있다.
 - 일반사용자나 업주사용자는 비밀번호를 맞춰야 상세페이지에 들어갈 수 있다.
-
+```html
+<div id="id01" class="w3-modal w3-animate-opacity">
+	<div class="w3-modal-content w3-card-4" style="top: 30%; width: 500px;">
+		<header class="w3-container w3-teal" style="background-color: #ffc107!important;"> 
+			<span onclick="delModal(this);" class="w3-button w3-large w3-display-topright">&times;</span>
+			<h2 style="margin-top:10px;">비밀번호 확인</h2>
+		</header>
+		<div class="w3-container" style="margin-top: 15px; height: 100px;">
+			<p style="margin-left: 50px;">비밀번호를 입력하세요.</p>
+			<form action="/mypageQna.do" method="post" class="pwFrm">			        	
+				<input type="hidden" name="qnaNo" value="${q.qnaNo }">
+				<input class="w3-input w3-border w3-round-large" type="password" name="qnaPassword" style="width: 300px;"><br>
+				<button class="w3-button w3-round" style="margin-left: 10px; background-color: gray; color:white;" onclick="pwChk(this)">확인</button>
+			</form>
+		</div>
+		<footer class="w3-container w3-teal">
+			<p></p>
+		</footer>
+	</div>
+ </div>
+```
+```javascript
+function modalMan(obj){
+	$(obj).parents(".qna-tbl").next().css("display", "block");
+			
+			
+		}
+		
+		function delModal(obj){
+			$("[name=qnaPassword]").val('');
+			$(".w3-animate-opacity").css("display", "none");
+			
+			
+		}
+		
+		function pwChk(obj){
+			if($("[name=qnaPassword]").eq(obj).val() == ""){
+				alert("비밀번호를 입력해주세요.");
+				$(obj).attr("type", "button");
+			}else{
+				$(this).attr("type", "submit");
+			}
+		}
+```
 #### 2-2. 답글달기(관리자)
 - 답글 등록 전
 ![image](https://user-images.githubusercontent.com/77394673/222178745-058003ef-693c-4291-b100-0e9c123fafb1.png)
