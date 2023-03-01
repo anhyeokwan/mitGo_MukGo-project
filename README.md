@@ -614,3 +614,79 @@ public ArrayList<NoticeFile> selectNoticeFile(int noticeNo) {
 
 	</select>
 ```
+#### 1-7.파일다운로드
+```
+@RequestMapping(value = "/noticeFileDown.do")
+	public void noticeFileDown(int noticeFileNo, Model model, HttpServletRequest request, HttpServletResponse respone) {
+		NoticeFile notice = service.selectOneNoticeFile(noticeFileNo);
+		
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/notice/");
+		String filepath = savePath + notice.getFilepath();
+		
+		try {
+			FileInputStream fis = new FileInputStream(filepath);
+			BufferedInputStream bis = new BufferedInputStream(fis);
+			
+			ServletOutputStream sos = respone.getOutputStream();
+			BufferedOutputStream bos = new BufferedOutputStream(sos);
+			
+			String resFilename = new String(notice.getFilename().getBytes("UTF-8"), "ISO-8859-1");
+			
+			respone.setContentType("application/octet-stream");
+			respone.setHeader("Content-Disposition", "attachment;filename=" + resFilename);
+			
+			while(true) {
+				int read = bis.read();
+				if(read != -1) {
+					bos.write(read);
+				}else {
+					break;
+				}
+			}
+			bis.close();
+			bos.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+```
+
+### 2. QnA
+- qna는 공지사항과 비슷하게 구현된 부분이 있어 다른 부분만 설명하겠습니다.
+#### 2-1. 비밀글
+![image](https://user-images.githubusercontent.com/77394673/222177649-6cffce6c-321f-4ef7-9d33-a25dfea3f6f4.png)
+- 관리자는 답글을 위해 비밀글을 비밀번호 없이 상세페이지에 들어갈 수 있다.
+- 일반사용자나 업주사용자는 비밀번호를 맞춰야 상세페이지에 들어갈 수 있다.
+
+#### 2-2. 답글달기(관리자)
+- 답글 등록 전
+![image](https://user-images.githubusercontent.com/77394673/222178745-058003ef-693c-4291-b100-0e9c123fafb1.png)
+
+- 답글달기
+![image](https://user-images.githubusercontent.com/77394673/222178970-b629d3e4-36ce-4327-b881-7fb2b989434d.png)
+
+- 답글을 등록 후(관리자)
+![image](https://user-images.githubusercontent.com/77394673/222179247-ab23eb3b-c1e0-47a0-88ef-367499d5624b.png)
+* 답글을 등록 후 관리자는 답글을 수정 또는 삭제를 할 수 있다.
+
+- 답글을 등록 후(일반사용자, 업주사용자)
+![image](https://user-images.githubusercontent.com/77394673/222179762-3933c9e0-47fe-46d7-a131-977bdc98b74c.png)
+
+#### 2-3. 카테고리
+![image](https://user-images.githubusercontent.com/77394673/222180175-26f533a7-920b-4684-8ca4-e169ebd0d626.png)
+
+- 예약문의 클릭시
+![image](https://user-images.githubusercontent.com/77394673/222180399-173183d3-2018-4ef0-8817-77dc27bca516.png)
+
+#### QnA 작성
+![image](https://user-images.githubusercontent.com/77394673/222181078-e7e9fe8a-4c4c-4773-9616-eb14f8a82a6c.png)
+* 카테고리를 정해서 문의를 할 수 있다.
+
+
+
