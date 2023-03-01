@@ -759,7 +759,37 @@ $(".faq-ul").on("click", function(event){
 - 북마크 선택시
 ![image](https://user-images.githubusercontent.com/77394673/222193289-b0dfa29f-922a-479d-b706-6b496d41df53.png)
 - 북마크 선택 안할 시
- ![image](https://user-images.githubusercontent.com/77394673/222193594-bb9e9ec9-edc7-4f64-9275-0b3bd97b0335.png
+ ![image](https://user-images.githubusercontent.com/77394673/222193594-bb9e9ec9-edc7-4f64-9275-0b3bd97b0335.png)
+```javascript
+// --------- 북마크 인서트
+      	function addBookmark(obj, storeNo, bookmarkId){
+      		$("#bookMark").hide();
+      		$("#bookMark1").show();
+      		
+      		$.ajax({
+      			url : "/insertStoreBookmark.do",
+      			type : "post",
+      			data : {storeNo : storeNo, bookmarkId : bookmarkId},
+      			success : function(data){
+      				console.log(data);
+      			}
+      		})
+      	}
+      	
+      	function deleteBookmark(obj, storeNo, bookmarkId){
+      		$("#bookMark1").hide();
+      		$("#bookMark").show();
+      		
+      		$.ajax({
+      			url : "/deleteStoreBookmark.do",
+      			type : "post",
+      			data : {storeNo : storeNo, bookmarkId : bookmarkId},
+      			success : function(data){
+      				console.log(data)
+      			}
+      		})
+      	}
+```
  
  #### 4-2. 북마크 목록
  ![image](https://user-images.githubusercontent.com/77394673/222194215-aa9f5940-8752-4017-b5b3-2b66678eb3a5.png)
