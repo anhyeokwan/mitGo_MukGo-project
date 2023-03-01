@@ -731,5 +731,26 @@ function modalMan(obj){
 ![image](https://user-images.githubusercontent.com/77394673/222181078-e7e9fe8a-4c4c-4773-9616-eb14f8a82a6c.png)
 * 카테고리를 정해서 문의를 할 수 있다.
 
+### 3.FAQ
+#### 3-1. FAQ 목록
+![image](https://user-images.githubusercontent.com/77394673/222184162-f28dab5b-1686-49bf-9885-62a3755b0b46.png)
 
+#### 3-2. FAQ 목록 상세
+![image](https://user-images.githubusercontent.com/77394673/222184374-c931726a-1bbe-48fc-ad94-8590780cf01d.png)
+- 스크립트에서 slideToggle()을 써서 애니메이션 효과를 주었습니다.
+```javascript
+$(".faq-ul").on("click", function(event){
+            const index = $(".faq-ul").index(this);
+            $(".faq-answer").eq(index).slideToggle();
+            $(".faq-one .material-symbols-outlined").eq(index).toggleClass("active");
+            event.stopPropagation();
+        });
+```
+
+#### 3-3. FAQ 작성(관리자)
+![image](https://user-images.githubusercontent.com/77394673/222185697-df8f31aa-c803-4861-9681-f4f11dd7c529.png)
+* FAQ는 관리자만 작성가능합니다.
+
+#### 3-4. FAQ 수정
+![image](https://user-images.githubusercontent.com/77394673/222186118-8ed46359-deb0-485b-98e4-95cca4825919.png)
 
